@@ -1,0 +1,22 @@
+{% extends 'web_autos/base.html' %}
+
+{% block title %}Busqueda - AutosDelSur{% endblock %}
+
+{% block content %}
+<h1>Busqueda por Vehiculo</h1>
+<br>
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+    <br>
+    <br>
+</form>
+{% if results %}
+    <h2>Resultado</h2>
+    <ul>
+        {% for car in results %}
+            <li>{{ car.model }} - {{ car.brand.name }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

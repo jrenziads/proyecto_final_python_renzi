@@ -1,0 +1,16 @@
+{% extends 'web_autos/base.html' %}
+
+{% block title %}Agregar Marca - AutosDelSur{% endblock %}
+
+{% block content %}
+<h1>Agregar Marca</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+    <br>
+    <br>
+</form>
+{% endblock %}
+
+
