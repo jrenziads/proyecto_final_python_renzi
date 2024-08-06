@@ -1,0 +1,26 @@
+{% extends 'web_autos/base.html' %}
+
+{% block title %}Acerca de mi - Autos del Sur{% endblock %}
+
+{% block content %}
+    <div class="text-center my-5">
+        <img class="img-fluid rounded-circle mb-4" src="https://media.toyota.com.ar/91e35b41-0137-4d52-a05a-0de02440347d.png" alt="..." />
+        <h1 class="text-white fs-3 fw-bolder">Autos del Sur</h1>
+        <p class="text-white-50 mb-0">Concesionario Oficial Toyota</p>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            {% for car in cars %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car.brand.name }} {{ car.model }}</h5>
+                        <p class="card-text">Año: {{ car.year }}</p>
+                        <p class="card-text">Precio: ${{ car.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

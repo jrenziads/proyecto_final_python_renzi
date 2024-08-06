@@ -1,28 +1,27 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, FormView
+from django.urls import reverse_lazy
 from .forms import BrandForm, CarForm, OwnerForm, SearchForm
-from .models import Brand, Car, Owner
+from .models import Car
 
 class IndexView(ListView):
     model = Car
     template_name = 'web_autos/index.html'
     context_object_name = 'cars'
 
+class AboutView(TemplateView):
+    template_name = 'web_autos/about.html'
+
 class AddBrandView(CreateView):
-    model = Brand
     form_class = BrandForm
     template_name = 'web_autos/add_brand.html'
     success_url = reverse_lazy('index')
 
 class AddCarView(CreateView):
-    model = Car
     form_class = CarForm
     template_name = 'web_autos/add_car.html'
     success_url = reverse_lazy('index')
 
-class AddOwnerView(CreateView):
-    model = Owner
+class AddOwnerView(CreateView): 
     form_class = OwnerForm
     template_name = 'web_autos/add_owner.html'
     success_url = reverse_lazy('index')
@@ -43,4 +42,3 @@ class SearchView(FormView):
         query = form.cleaned_data['query']
         results = Car.objects.filter(model__icontains=query)
         return self.render_to_response(self.get_context_data(form=form, results=results))
-
