@@ -1,14 +1,13 @@
 {% extends 'web_autos/base.html' %}
+{% load static %}
 
-{% block title %}Agregar Vehiculo - AutosDelSur{% endblock %}
+{% block title %}Agregar/Editar Vehículo{% endblock %}
 
 {% block content %}
-<h1>Agregar Vehiculo</h1>
-<form method="post">
+<h1>{% if object %}Editar{% else %}Agregar{% endif %} Vehículo</h1>
+<form method="post" enctype="multipart/form-data"> 
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
-    <br>
-    <br>
+    <button type="submit">{% if object %}Actualizar{% else %}Agregar{% endif %}</button>
 </form>
 {% endblock %}

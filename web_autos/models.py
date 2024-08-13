@@ -12,6 +12,7 @@ class Car(models.Model):
     model = models.CharField(max_length=100, verbose_name="Modelo")
     year = models.IntegerField(verbose_name="Año")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio")
+    image = models.ImageField(upload_to='car_images/', blank=True, null=True, verbose_name="Imagen")  # Campo de imagen
 
     def __str__(self):
         return f'{self.brand.name} {self.model}'

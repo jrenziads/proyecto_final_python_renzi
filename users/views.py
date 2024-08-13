@@ -27,7 +27,10 @@ class CarUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'web_autos/car_form.html'
     success_url = reverse_lazy('car_list')
 
-class CarDeleteView(LoginRequiredMixin, DeleteView):
+class CarDeleteView(DeleteView):
     model = Car
-    template_name = 'web_autos/car_confirm_delete.html'
+    template_name = 'web_autos/car_confirm_delete.html'  
     success_url = reverse_lazy('car_list')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)  

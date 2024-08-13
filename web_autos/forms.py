@@ -13,7 +13,7 @@ class BrandForm(forms.ModelForm):
 class CarForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = ['brand', 'model', 'year', 'price']
+        fields = ['brand', 'model', 'year', 'price', 'image']
         labels = {
             'brand': 'Marca',
             'model': 'Modelo',
@@ -35,6 +35,6 @@ class SearchForm(forms.Form):
         label='Buscar',
         max_length=100,
         error_messages={
-            'required': 'Este campo es obligatorio',
+            'required': 'Busqueda por nombre de vehiculo',
         }
     )

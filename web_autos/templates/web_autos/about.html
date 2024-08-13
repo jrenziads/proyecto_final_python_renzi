@@ -1,26 +1,49 @@
 {% extends 'web_autos/base.html' %}
 
-{% block title %}Acerca de mi - Autos del Sur{% endblock %}
+{% block title %}Acerca de mí - Autos del Sur{% endblock %}
 
 {% block content %}
-    <div class="text-center my-5">
-        <img class="img-fluid rounded-circle mb-4" src="https://media.toyota.com.ar/91e35b41-0137-4d52-a05a-0de02440347d.png" alt="..." />
-        <h1 class="text-white fs-3 fw-bolder">Autos del Sur</h1>
-        <p class="text-white-50 mb-0">Concesionario Oficial Toyota</p>
-    </div>
-    <div class="container mt-4">
-        <div class="row">
-            {% for car in cars %}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ car.brand.name }} {{ car.model }}</h5>
-                        <p class="card-text">Año: {{ car.year }}</p>
-                        <p class="card-text">Precio: ${{ car.price }}</p>
-                    </div>
+<div class="text-center my-5">
+    <img class="img-fluid rounded-circle mb-4" src="https://media.toyota.com.ar/91e35b41-0137-4d52-a05a-0de02440347d.png" alt="..." />
+    <h1 class="text-white fs-3 fw-bolder">Autos del Sur</h1>
+    <p class="text-white-50 mb-0">Concesionario Oficial Toyota</p>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    <h4>Acerca de mi.</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Mi nombre es Javier R. y tengo más de 20 años de experiencia en el campo de los sistemas, especializándome en infraestructura y desarrollo. Durante mi carrera, he trabajado en proyectos complejos, brindando soluciones tecnológicas innovadoras y mejorando continuamente la eficiencia operativa.
+                    </p>
+                    <p class="card-text">
+                        A lo largo de mi trayectoria, he liderado equipos de tecnología, implementado sistemas de infraestructura escalables y me he mantenido actualizado con las últimas tendencias tecnológicas para asegurar que las soluciones que ofrezco sean de la más alta calidad.
+                    </p>
+                    <p class="card-text">
+                        Estoy comprometido con la excelencia y siempre busco nuevas oportunidades para aprender y crecer en mi campo.
+                    </p>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
+
+    <div class="row">
+        {% for car in cars %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.brand.name }} {{ car.model }}</h5>
+                    <p class="card-text">Año: {{ car.year }}</p>
+                    <p class="card-text">Precio: ${{ car.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
+

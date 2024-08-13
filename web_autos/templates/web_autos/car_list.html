@@ -3,23 +3,19 @@
 
 {% block title %}Lista - AutosDelSur{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Vehículos</title>
-    <link rel="stylesheet" href="{% static 'web_autos/css/styles.css' %}">
-</head>
-<body>
-    {% block content %}
-    <h1>Lista de Vehículos</h1>
-    <ul>
-        {% for car in cars %}
-            <li>{{ car.brand }} - {{ car.model }} - {{ car.year }} - ${{ car.price }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'car_add' %}">Agregar Vehículo</a>
-    {% endblock %}
-</body>
-</html>
+{% block content %}
+<h1>Lista de Vehículos</h1>
+<ul>
+    {% for car in cars %}
+        <li>
+            {{ car.brand }} - {{ car.model }} - {{ car.year }} - ${{ car.price }}
+            <!-- Botón para eliminar el vehículo -->
+            <form method="post" action="{% url 'car_delete' car.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'car_add' %}">Agregar Vehículo</a>
+{% endblock %}
