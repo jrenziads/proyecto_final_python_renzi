@@ -39,7 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'search' %}">Buscar</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-flex align-items-center">
+                            <!-- Mostrar el avatar -->
+                            <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}" class="rounded-circle" width="30" height="30" style="margin-right: 10px;">
                             <form method="post" action="{% url 'logout' %}">
                                 {% csrf_token %}
                                 <button type="submit" class="nav-link btn btn-link" style="padding: 0; border: none; background: none;">Cerrar Sesión</button>

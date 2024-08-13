@@ -8,6 +8,30 @@
     <h1 class="text-white fs-3 fw-bolder">Autos del Sur</h1>
     <p class="text-white-50 mb-0">Concesionario Oficial Toyota</p>
 </div>
+
+<!-- Formulario de búsqueda -->
+<div class="container">
+    <form method="get" action=".">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" name="brand" class="form-control" placeholder="Buscar por marca" value="{{ request.GET.brand }}">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="model" class="form-control" placeholder="Buscar por modelo" value="{{ request.GET.model }}">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="min_price" class="form-control" placeholder="Precio mínimo" value="{{ request.GET.min_price }}">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="max_price" class="form-control" placeholder="Precio máximo" value="{{ request.GET.max_price }}">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <div class="container mt-4">
     <div class="row">
         {% for car in cars %}

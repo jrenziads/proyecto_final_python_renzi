@@ -8,6 +8,24 @@ class IndexView(ListView):
     template_name = 'web_autos/index.html'
     context_object_name = 'cars'
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        brand = self.request.GET.get('brand')
+        model = self.request.GET.get('model')
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+
+        if brand:
+            queryset = queryset.filter(brand__name__icontains=brand)
+        if model:
+            queryset = queryset.filter(model__icontains=model)
+        if min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        if max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        return queryset
+
 class AboutView(TemplateView):
     template_name = 'web_autos/about.html'
 
